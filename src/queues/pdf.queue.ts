@@ -1,10 +1,10 @@
 import { Queue } from "bullmq";
 
-import { redisConfig } from "../config/redis";
+import { redisConnection } from "../config/redis";
 
 export const pdfQueue = new Queue(
   "pdf-generation-queue",
   {
-    connection: redisConfig,
+    connection: redisConnection,
   }
 );

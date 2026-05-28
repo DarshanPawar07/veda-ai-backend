@@ -1,6 +1,10 @@
 import IORedis from "ioredis";
 
-export const redisConfig = new IORedis(
+export const redisConnection = {
+  url: process.env.REDIS_URL,
+};
+
+export const redisClient = new IORedis(
   process.env.REDIS_URL as string,
   {
     maxRetriesPerRequest: null,

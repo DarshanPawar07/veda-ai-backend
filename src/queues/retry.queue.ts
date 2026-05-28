@@ -1,11 +1,11 @@
 import { Queue } from "bullmq";
 
-import { redisConfig } from "../config/redis";
+import { redisConnection } from "../config/redis";
 
 export const retryQueue =
   new Queue(
     "retry-queue",
     {
-      connection: redisConfig,
+      connection: redisConnection,
     }
   );
