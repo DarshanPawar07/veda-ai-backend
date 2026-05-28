@@ -4,6 +4,9 @@ from "express";
 import Assignment
 from "../models/Assignment";
 
+import GeneratedPaper
+from "../models/GeneratedPaper";
+
 import { generationQueue }
 from "../queues/generation.queue";
 
@@ -136,6 +139,8 @@ export const getSingleAssignment =
       const { id } =
         req.params;
 
+      // ASSIGNMENT
+
       const assignment =
         await Assignment.findById(
           id
@@ -152,11 +157,23 @@ export const getSingleAssignment =
         });
       }
 
+      // GENERATED PAPER
+
+      const paper =
+        await GeneratedPaper.findOne({
+
+          assignmentId: id,
+
+        });
+
       return res.status(200).json({
 
         success: true,
 
         assignment,
+
+        paper,
+
       });
 
     } catch (error) {
